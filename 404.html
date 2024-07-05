@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suivi de Colis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .whatsapp-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #25d366;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .whatsapp-button:hover {
+            background: #128c7e;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>KUKIA express</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Accueil</a></li>
+                <li><a href="#track">Suivi</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <div class="container">
+            <h2>Bienvenue sur notre service de suivi de colis</h2>
+            <p>Suivez vos colis expédiés via les agences de transport mondial et national, y compris FedEx, DHL, Mont Gabon Airline, Airways, et plus encore.</p>
+        </div>
+    </section>
+
+    <section id="track">
+        <div class="container">
+            <h2>Suivre votre colis</h2>
+            <form id="track-form">
+                <label for="tracking-number">Numéro de suivi:</label>
+                <input type="text" id="tracking-number" name="tracking-number" required>
+                <label for="carrier">Transporteur:</label>
+                <select id="carrier" name="carrier">
+                    <option value="fedex">kukia express</option>
+                    <option value="dhl">DHL</option>
+                    <option value="ups">FedEx</option>
+                    <option value="postnl">PostNL</option>
+                    <option value="dpd">DPD</option>
+                    <option value="mont_gabon_airline">Mont Gabon Airline</option>
+                    <option value="airways">Airways</option>
+                    <option value="express_kivu">Express Kivu</option>
+                    <option value="congo_shipping">Congo Shipping</option>
+                    <option value="equateur_transit">Equateur Transit</option>
+                    <!-- Ajoutez plus d'agences -->
+                </select>
+                <button type="submit">Suivre</button>
+            </form>
+            <div id="tracking-result"></div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Contactez-nous</h2>
+            <p>Pour toute question, contactez-nous directement via WhatsApp:</p>
+            <a href="https://wa.me/+243 815 138 869" target="_blank" class="whatsapp-button">Chattez avec nous sur WhatsApp</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Suivi de Colis. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        document.getElementById('track-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const trackingNumber = document.getElementById('tracking-number').value;
+            const carrier = document.getElementById('carrier').value;
+            const resultDiv = document.getElementById('tracking-result');
+
+            // Simuler un appel API pour obtenir le statut de suivi
+            resultDiv.innerHTML = `<p>Recherchant le statut du colis pour le numéro de suivi ${trackingNumber} chez ${carrier.toUpperCase()}...</p>`;
+
+            // Exemple de réponse simulée
+            setTimeout(function() {
+                resultDiv.innerHTML = `
+                    <h3>Statut de votre colis:</h3>
+                    <p>Numéro de suivi: ${trackingNumber}</p>
+                    <p>Transporteur: ${carrier.toUpperCase()}</p>
+                    <p>Statut: En transit</p>
+                    <p>Dernière mise à jour: 2024-07-04</p>
+                `;
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
